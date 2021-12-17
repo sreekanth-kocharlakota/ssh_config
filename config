@@ -1,0 +1,34 @@
+# $HOME/.ssh/config
+#
+# Permissions: User R/W, NOT Writable by others
+# chmod 700 $HOME/.ssh
+# chmod 600 $HOME/.ssh/config
+# First some generic settings that applies to all specific hosts below unless specified otherwise
+
+# Host, an alias for the entry
+# User, the expected and always present opc user
+# Hostname, the address to the host you want to connect to
+# Port, the ssh port
+# IdentityFile, the location of your private keyfile
+# UseKeychain, if your ssh key have a password you only need to enter it the first time and then it will be saved in the macos keychain or Gnome keyring
+# ProxyJump, describes the chain of hosts to connect via (jump through) to get to the remote host. Multiple hosts can be specified separated by a comma. ProxyJump is a simplification of the older ProxyCommand.
+# LocalForward, the directive on what port to forward to your local machine from the remote host.
+
+# For more - https://www.ateam-oracle.com/post/simplify-your-day-with-ssh-config-file-entries-and-self-closing-tunnels
+
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
+  IdentityFile <path_to_pem_file>
+
+Host <jump_host>
+  HostName <jump_host>
+  User <username>
+  IdentityFile <path_to_pem_file>
+  LocalForward 3128 <webproxy_server_name>:3128
+
+Host <server_accessible_via_jumphost>
+  HostName <server_accessible_via_jumphost>
+  User <username>
+  Port <port>
+  ProxyJump <username>@<jump_host>
