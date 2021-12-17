@@ -3,5 +3,5 @@ A simple and common use case is to access a VM DB System (or any host in a priva
 
 In this test setup, the VCN has two subnets, one public and one private. All security lists and route tables are default.
 
-![alt text](https://github.com/sreekanth-kocharlakota/ssh_config/blob/main/bastion_host_usage.jpeg)
+![alt text](https://github.com/sreekanth-kocharlakota/ssh_config/blob/main/bastion_host_usage.jpeg?raw=true| width=100)
 
